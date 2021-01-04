@@ -24,6 +24,6 @@ myName=Serial.readString();
 // puts it into myName.
 Serial.print(msg2);
 Serial.print(myName);
-Serial.print(msg3);
+Serial.println(msg3); // so it goes on the next line
 
 }
