@@ -56,4 +56,21 @@ if (myColor == "aqua"){
     analogWrite(bluePin, 125);
 }
 
+if (myColor == "yellow"){
+    analogWrite(redPin, 255);
+    analogWrite(greenPin, 100);
+    analogWrite(bluePin, 0);
+}
+
+if (myColor == "cyan"){
+    analogWrite(redPin, 0);
+    analogWrite(greenPin, 255);
+    analogWrite(bluePin, 255);
+}
+
+if (myColor == "magenta"){
+    analogWrite(redPin, 255);
+    analogWrite(greenPin, 0);
+    analogWrite(bluePin, 100);
+}
 }
