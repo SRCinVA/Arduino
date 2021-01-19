@@ -39,7 +39,11 @@ if(buttonOld == 0 && buttonNew == 1){
 //   - first button press, making newButton into 1
 //   - with oldButton==0 and newButton==1, you can get into loop
 
-
+// The most transparent approach in the code would have been to use a flag to 
+// connect both the "on" and "off" states (as shown by another solution in the comments). 
+// It also would have been helpful if he had stated that "off" positions on the pushbuttons 
+// are read as "0" as a matter of course--at least it seems that way. 
+//Yet another idea would have been to turn the digitalRead as a variable--unfortunately, I can't find that solution in the comments.
 
 
 buttonOld=buttonNew;
