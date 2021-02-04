@@ -6,8 +6,9 @@ int BP1=8; // button pin 8
 int BP2=9; // button pin 9
 int B1Val;
 int B2Val;
-int mSpeed=100; //between 0 and 255
+int mSpeed=0; //between 0 and 255
                 // it will run at 100 but needs a push
+int dt=500; // to make a reading every half second
 
 
 void setup() {
@@ -32,6 +33,41 @@ Serial.print("Button 1 "); // to check it's coming through
 Serial.print(B1Val);
 Serial.print(" Button 2 ");
 Serial.println(B2Val);
+
+if (B1Val == 0)
+{                     // remember: "0" here means "unpressed"
+    mSpeed=mSpeed-10; //if you press the decrement button, speed goes down by 10.
+    delay(dt);
+}
+
+if (B2Val==0){       // remember: "0" here means "unpressed"
+    mSpeed=mSpeed+10; // if you press the increment button
+    delay(dt);
+}
+
+if (mSpeed>255){
+    mSpeed=255;      // to rein it back to 255, if an increment pushed it over.
+}
+
+if (mSpeed<-255){
+    mSpeed=-255;
+}
+
+if (mSpeed==10){ // we know it won't work there, so we need to bump it up to 100 automatically.
+    mSpeed=100;
+}
+
+if (mSpeed == -10){ // we know it won't work there, so we need to bump it up to 100 automatically.
+    mSpeed = -100;
+}
+
+if (mSpeed == 90 || mSpeed == 95){
+    mSpeed = 0;
+}
+
+if (mSpeed == -90 || mSpeed == -95){
+    mSpeed = 0;
+}
 
 digitalWrite(dir1,LOW);
 digitalWrite(dir2,HIGH);
