@@ -1,4 +1,3 @@
-
 int speedPin=5;
 int dir1=4;
 int dir2=3;
@@ -29,18 +28,21 @@ void loop() {
 
 B1Val = digitalRead(BP1); // shouldn't be analog
 B2Val = digitalRead(BP2);
+/*
 Serial.print("Button 1 "); // to check it's coming through
 Serial.print(B1Val);
 Serial.print(" Button 2 ");
 Serial.println(B2Val);
+*/
+Serial.print("Motor Speed: ")
+Serial.println(mSpeed);
 
-if (B1Val == 0)
-{                     // remember: "0" here means "unpressed"
+if (B1Val == 0){      // remember: "0" here means "unpressed"
     mSpeed=mSpeed-10; //if you press the decrement button, speed goes down by 10.
     delay(dt);
 }
 
-if (B2Val==0){       // remember: "0" here means "unpressed"
+if (B2Val == 0){       // remember: "0" here means "unpressed"
     mSpeed=mSpeed+10; // if you press the increment button
     delay(dt);
 }
@@ -69,14 +71,20 @@ if (mSpeed == -90 || mSpeed == -95){
     mSpeed = 0;
 }
 
-digitalWrite(dir1,LOW);
-digitalWrite(dir2,HIGH);
-analogWrite(speedPin,mSpeed); // with the kick, it will sustain at 100
+if (mSpeed==0){
+    analogWrite(speedPin,0); //if mSpeed is 0, you want the motor to be off.
+}
 
+if (mSpeed>0){
+digitalWrite(dir1, LOW);
+digitalWrite(dir2, HIGH);
+analogWrite(speedPin, mSpeed); // with the kick, it will sustain at 100
+}
 
-/* to make it go counterclockwise:
+if (mySpeed<0){
 digitalWrite(dir1, HIGH);
 digitalWrite(dir2, LOW);
-analogWrite(speedPin, mSpeed);
-*/
+analogWrite(speedPin, abs(mSpeed)); // we cast the negative speed as an absolute value.
+}
+
 }
