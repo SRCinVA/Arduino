@@ -1,4 +1,4 @@
-byte myByte=B00000000; // as a binary
+byte myByte=0X00;
 int dt=1500;
 
 
@@ -8,7 +8,12 @@ Serial.begin(9600)
 
 
 void loop() {
-Serial.println(myByte, BIN); // can also print out in HEX
+Serial.print(myByte, DEC); // can also print out in BIN and HEX
+Serial.println("   ");
+Serial.print(myByte, BIN);
+Serial.println("   ");
+Serial.print(myByte, HEX);
+
 myByte=myByte+1; // this makes a hexadecimal counter
 delay(dt)
 }
