@@ -14,6 +14,17 @@ lcd.begin(16,2);  //it has 16 columns and 2 rows
 }
 
 void loop() {
+lcd.setCursor(0,0);
+lcd.println("Hello World");
+lcd.setCursor(0,1); // this moves it down to the second line
+lcd.print("What's your name?");
+delay(1000); // hard-coded ...?!?!?
+lcd.clear() // if you don't, the entire field won't clear away
 
-    
+/*
+
+
+*/
+
+
 }
