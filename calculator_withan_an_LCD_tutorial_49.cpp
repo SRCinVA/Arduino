@@ -41,14 +41,32 @@ lcd.print("Input Second Number");
 //wait
 while (Serial.available() == 0)
 {
-
 }
 //read
 secNum = Serial.parseFloat();
 
+lcd.clear();
+lcd.setCursor(0,0);
+// ask
+lcd.print("Input operator (+,-,*,/)")
+// read
+op = Serial.readString();
 
+if op == "+"{
+    answer = firstNum + secNum;
+}
 
+if op == "-"{
+    answer = firstNum - secNum;
+}
 
+if op == "*"{
+    answer = firstNum * secNum;
+}
+
+if op == "/"{
+    answer = firstNum/secNum;
+}
 
 lcd.print("Watch me count");
 lcd.setCursor(0,1); // this moves the coming string down to the second line
