@@ -1,4 +1,6 @@
 # include <LiquidCrystal.h>  // no semicolon for library
+# include <string.h>   // still doesn't work
+
 int re = 7;
 int en = 8;
 int d4 = 9;
@@ -10,7 +12,7 @@ float firstNum;
 float secNum;
 float answer;
 
-String op;   // bizarre string problem here
+string op;   // bizarre string problem here
 
 LiquidCrystal lcd(rs,en,d4,d5,d6,d7)  // this is how we connect it to the Arduino
 
@@ -24,7 +26,7 @@ void loop() {
 lcd.setCursor(0,0);
 
 //ask for first number
-lcd.print("Input First Number");
+lcd.print("Input 1st Number");
 //wait
 while (Serial.available() == 0) {
 
@@ -37,7 +39,7 @@ lcd.clear();
 
 lcd.setCursor(0, 0); // he cleared the first number so this is OK to do
 //ask
-lcd.print("Input Second Number");
+lcd.print("Input 2nd Number");
 //wait
 while (Serial.available() == 0)
 {
@@ -52,21 +54,28 @@ lcd.print("Input operator (+,-,*,/)")
 // read
 op = Serial.readString();
 
-if op == "+"{
-    answer = firstNum + secNum;
+if (op=="+"){
+    answer=firstNum+secNum;
 }
 
-if op == "-"{
+if (op == "-"){
     answer = firstNum - secNum;
 }
 
-if op == "*"{
+if (op == "*"){
     answer = firstNum * secNum;
 }
 
-if op == "/"{
+if (op == "/"){
     answer = firstNum/secNum;
 }
+lcd.clear();
+lcd.setCursor(0,0);
+lcd.print(firstNum);
+lcd.print(op);
+lcd.print(secNum);
+lcd.print(" = ");
+lcd.print(answer);
 
 lcd.print("Watch me count");
 lcd.setCursor(0,1); // this moves the coming string down to the second line
