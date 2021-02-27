@@ -14,5 +14,12 @@ delay(setTime) // good general practice gives things time to set up
 }
 
 void loop() {
-humidity=HT.readHumidity();  
+Humidity=HT.readHumidity();
+TempC=HT.readTemperature();  
+TempF=HT.readTemperature(true); //you have to specify true for it read Fahrenheit (?!?)
+
+Serial.print("Humidity: ")
+Serial.print(humidity);
+Serial.print(" Temperature C ");
+Serial.print(tempC);
 }
