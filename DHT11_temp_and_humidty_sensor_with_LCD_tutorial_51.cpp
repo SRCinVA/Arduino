@@ -2,12 +2,12 @@
 #define Type DHT11  // sets up a constant
 #include <LiquidCrystal.h>
 
-rs = 7;
-en = 8;
-d4 = 9;
-d5 = 10;
-d6 = 11;
-d7 = 12;
+int rs = 7;
+int en = 8;
+int d4 = 9;
+int d5 = 10;
+int d6 = 11;
+int d7 = 12;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7); // creates  the LCD object
 
     int sensePin = 2;
@@ -26,9 +26,18 @@ lcd.begin(16,2) // it has 16 rows and 2 columns
 }
 
 void loop() {
+
 Humidity=HT.readHumidity();
 TempC=HT.readTemperature();  
 TempF=HT.readTemperature(true); //you have to specify "true" for it read Fahrenheit (?!?)
+lcd.seCursor(0,0);
+lcd.print("Temp F = ");
+lcd.print(TempF);
+lcd.setCursor(0,1);
+lcd.print("Humidity = ");
+lcd.print(Humidity);
+lcd.print(" %");
+delay(500);
 
 Serial.print("Humidity: ");
 Serial.print(Humidity);
