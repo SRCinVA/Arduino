@@ -38,6 +38,7 @@ lcd.print("Humidity = ");
 lcd.print(Humidity);
 lcd.print(" %");
 delay(500);
+lcd.clear(); // make sure there's dealy before the clear; otherwise it will be hard to read
 
 Serial.print("Humidity: ");
 Serial.print(Humidity);
@@ -46,5 +47,6 @@ Serial.print(TempC);
 Serial.print(" C ");
 Serial.print(TempF);
 Serial.print(" F ");
-delay(dt);
 }
+
+// After you download the code, there's no need for the computer. Next, we need to hook up a battery.
