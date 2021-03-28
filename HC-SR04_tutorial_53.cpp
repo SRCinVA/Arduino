@@ -15,5 +15,9 @@ delayMicroseconds(10);
 digitalWrite(trigPin, HIGH); // stay HIGH until ...
 delayMicroseconds(10);
 digitalWrite(trigPin, LOW); // ... the ping comes back, then goes LOW again
+pingTravelTime=pulseIn(echoPin, HIGH); // this measures the legnth of the HIGH pulse (for assessing distance?)
+                    // we're looking for a HIGH pulse from the echo pin.
+                    // we'd no longer need an oscilloscope
 delay(25);
+Serial.print(pingTravelTime);
 }
