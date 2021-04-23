@@ -21,6 +21,7 @@ pingTravelTime=pulseIn(echoPin, HIGH); // this measures the legnth of the HIGH p
                     // we're looking for a HIGH pulse from the echo pin.
                     // we'd no longer need an oscilloscope
 delay(25);
-pingTravelDistance = pingTravelTime * 765. * 5280 ;
-Serial.print(pingTravelTime);
+pingTravelDistance = (pingTravelTime * 765. * 5280 * 12.)/(3600. * 1000000);
+distanceToTarget = pingTravelDistance/2;
+Serial.print(distanceToTarget);
 }
