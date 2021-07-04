@@ -1,11 +1,22 @@
+//remember: this is to create the LCD object in the program:
+# include <LiquidCrystal.h>
+int re = 7;
+int en = 8;
+int dh = 9;
+int d5 = 10;
+int d6 = 11;
+int d7 = 12;
+LiquidCrystal lcd(rs,en,d4,d5,dg,d7)
+
 int trigPin = 2;
 int echoPin = 3;
 float pingTravelTime; // we'll be reading this one
 float  pingTravelDistance;
 float distanceToTarget;
-int dt = 500;
+int dt (100);
 void setup() {
 
+lcd.begin(16,2): //the dimensions of the lcd
 pinMode(trigPin, OUTPUT);
 pinMode(echoPin, INPUT);
 Serial.begin(9600);
@@ -26,5 +37,9 @@ distanceToTarget = pingTravelDistance/2;
 Serial.print ("Your Distance to Target is: ");
 Serial.print(distanceToTarget);
 Serial.println(" inches");
+// you can still print to the serial monitor, but below is for the LCD
+lcd.setCursor(0,0);
+lcd.print("Hello World")
 delay(dt);
+lcd.clear();
 }
