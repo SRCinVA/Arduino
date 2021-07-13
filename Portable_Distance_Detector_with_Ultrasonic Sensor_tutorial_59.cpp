@@ -13,7 +13,7 @@ int echoPin = 3;
 float pingTravelTime; // we'll be reading this one
 float  pingTravelDistance;
 float distanceToTarget;
-int dt (100);
+int dt (500);
 void setup() {
 
 lcd.begin(16,2): //the dimensions of the lcd
@@ -39,7 +39,10 @@ Serial.print(distanceToTarget);
 Serial.println(" inches");
 // you can still print to the serial monitor, but below is for the LCD
 lcd.setCursor(0,0);
-lcd.print("Hello World")
+lcd.print("Target Distance");
+lcd.setCursor(0,1); // need it to be column 0, row 1 to go to the next line.
+lcd.print(distanceToTarget);
+lcd.print(" inches")
 delay(dt);
 lcd.clear();
 }
