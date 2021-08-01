@@ -15,7 +15,7 @@ int echoPin = 3;
 float pingTravelTime; // we'll be reading this one
 float  pingTravelDistance;
 float distanceToTarget;
-int dt (500);
+int dt (5000);
 void setup() {
 
 lcd.begin(16,2): //the dimensions of the lcd
@@ -29,7 +29,18 @@ Serial.begin(9600);
 void loop() { // we need to go LOW -> HIGH -> LOW for a clear signal
 lcd.setCursor(0,0);  // to create the prompt for the LCD
 lcd.print("Place the target");
+lcd.setCursor(0,1) // need to reset it to another line
 lcd.print("Press to Measure");
+// now we need to see the status of the button
+buttonVal=digitalRead(buttonPin);
+//complcated: if this reads as a "1", then just sit in that status. We do this with a While Loop:
+while (buttonVal==1);{
+    // here, we need to keep checking the button's status:
+    buttonVal=digitalRead(buttonPin)
+}
+// this will just churn away until you get a "0". When it's "0", then makes the measurement:
+
+
 digitalWrite(trigPin,LOW); // start LOW
 delayMicroseconds(10);
 digitalWrite(trigPin, HIGH); // stay HIGH until ...
@@ -55,4 +66,8 @@ lcd.setCursor(0,1); // need it to be column 0, row 1 to go to the next line.
 lcd.print(distanceToTarget);
 lcd.print(" inches")
 delay(dt);
+
+
+
+
 }
