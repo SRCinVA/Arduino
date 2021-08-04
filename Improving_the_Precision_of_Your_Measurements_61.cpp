@@ -12,7 +12,7 @@ int buttonVal; // we're going to read from this one, so you don't assign a start
 int numMeas=50; // average a bunch of measurements to improve the precision.
 int avMeas;
 int j; // we might need a counter for a For Loop.
-int bucket; // to the numbers to as they come in.
+int bucket=0; // to the numbers to as they come in. Initialize it to 0; otherwise it throws an eror.
 
 LiquidCrystal lcd(rs,en,d4,d5,dg,d7)
 
@@ -47,8 +47,6 @@ while (buttonVal==1);{
 // this will just churn away until you get a "0". When it's "0", then makes the measurement:
 for (j=1;j<=numMeas; j=j+1){  //here's the For Loop to capture the values.
 
-
-}
 digitalWrite(trigPin,LOW); // start LOW
 delayMicroseconds(10);
 digitalWrite(trigPin, HIGH); // stay HIGH until ...
@@ -60,6 +58,12 @@ pingTravelTime=pulseIn(echoPin, HIGH); // this measures the length of the HIGH p
 delay(25);
 pingTravelDistance = (pingTravelTime * 765. * 5280 * 12.)/(3600. * 1000000);
 distanceToTarget = pingTravelDistance/2;
+// we need to add the bucket to this For Loop
+bucket=bucket+distanceToTarget;  // each subsequent distanceToTarget is added.
+}
+// make sure this is out of the loop; you don't divide bucket every time the loop spins--you just do that once.
+average=bucket/numMeas;
+
 Serial.print ("Your Distance to Target is: ");
 Serial.print(distanceToTarget);
 Serial.println(" inches");
@@ -69,9 +73,9 @@ Serial.println(" inches");
 
 lcd.clear();
 lcd.setCursor(0,0);
-lcd.print("Target Distance");
+lcd.print("Average Target Distance");
 lcd.setCursor(0,1); // need it to be column 0, row 1 to go to the next line.
-lcd.print(distanceToTarget);
+lcd.print(average);
 lcd.print(" inches")
 delay(dt);
 
