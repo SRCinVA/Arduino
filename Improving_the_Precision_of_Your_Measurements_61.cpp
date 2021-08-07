@@ -10,7 +10,7 @@ int buttonPin = A0;
 int buttonVal; // we're going to read from this one, so you don't assign a starting value
 
 int numMeas=50; // average a bunch of measurements to improve the precision.
-int avMeas;
+float avMeas; // if it's an int, we have a large rounding problem.
 int j; // we might need a counter for a For Loop.
 int bucket=0; // to the numbers to as they come in. Initialize it to 0; otherwise it throws an eror.
 
@@ -45,7 +45,11 @@ while (buttonVal==1);{
     buttonVal=digitalRead(buttonPin)
 }
 // this will just churn away until you get a "0". When it's "0", then makes the measurement:
-for (j=1;j<=numMeas; j=j+1){  //here's the For Loop to capture the values.
+
+lcd.setCursor(0,0);
+lcd.print("Measuring ...");
+
+for (j=1; j<=numMeas; j=j+1){  //here's the For Loop to capture the values.
 
 digitalWrite(trigPin,LOW); // start LOW
 delayMicroseconds(10);
@@ -61,25 +65,24 @@ distanceToTarget = pingTravelDistance/2;
 // we need to add the bucket to this For Loop
 bucket=bucket+distanceToTarget;  // each subsequent distanceToTarget is added.
 }
-// make sure this is out of the loop; you don't divide bucket every time the loop spins--you just do that once.
-average=bucket/numMeas;
 
-Serial.print ("Your Distance to Target is: ");
-Serial.print(distanceToTarget);
+// make sure this is out of the loop; you don't divide bucket every time the loop spins--you just do that once.
+
+avMeas=bucket/numMeas;
+Serial.print ("Average Distance to the Target is: ");
+Serial.print(avMeas);
 Serial.println(" inches");
 // you can still print to the serial monitor, but below is for the LCD
 // it's better to clear it out here, so that the delay doesn't interrupt
 // like it did at the very bottom of this loop. The clear happens after the measurement is made.
 
 lcd.clear();
-lcd.setCursor(0,0);
+lcd.setCursor(0,0); // to get rid of the second line
+lcd.clear();
 lcd.print("Average Target Distance");
 lcd.setCursor(0,1); // need it to be column 0, row 1 to go to the next line.
 lcd.print(average);
 lcd.print(" inches")
 delay(dt);
-
-
-
 
 }
