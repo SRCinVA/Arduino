@@ -9,11 +9,12 @@ int d7 = 12;
 int buttonPin = A0;
 int buttonVal; // we're going to read from this one, so you don't assign a starting value
 
-int numMeas=50; // average a bunch of measurements to improve the precision.
+int numMeas=100; // average a bunch of measurements to improve the precision.
+                // if it's too fast, then increase the number of measurements (50 to 100)
 float avMeas; // if it's an int, we have a large rounding problem.
 int j; // we might need a counter for a For Loop.
-int bucket=0; // to the numbers to as they come in. Initialize it to 0; otherwise it throws an eror.
-
+float bucket=0; // to the numbers to as they come in. Initialize it to 0; otherwise it throws an eror.
+                // if measurement is a float, then bucket needs to be as well.
 LiquidCrystal lcd(rs,en,d4,d5,dg,d7)
 
 int trigPin = 2;
