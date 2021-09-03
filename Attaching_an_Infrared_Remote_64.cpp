@@ -24,5 +24,14 @@ void loop() {  // "we sit and wait for data"
         Serial.println(myCom);
     }
 
+    if cmd.value == "0xFFA825D" { //or whatever hex value the remote produces ("0x" says that a hex is coming)
+        myCom = "pwr";
+        Serial.println(myCom);
+    }
+
+
+
+
+
 
 }
