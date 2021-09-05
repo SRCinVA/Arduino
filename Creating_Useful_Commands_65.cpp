@@ -39,9 +39,35 @@ void loop() {  // "we sit and wait for data"
         Serial.println(myCom);
     }
 
+    if cmd.value == "0xFF10EF" {
+        myCom = "four";
+        Serial.println(myCom);
+    }
 
+    if cmd.value == "0xFF38C7" {
+        myCom = "five";
+        Serial.println(myCom);
+    }
 
+    if cmd.value == "0xFF5AA5" {
+        myCom = "six";
+        Serial.println(myCom);
+    }
 
+    if cmd.value == "0xFF42BD" {
+        myCom = "seven";
+        Serial.println(myCom);
+    }
+
+    if cmd.value == "0xFF4AB5" {
+        myCom = "eight";
+        Serial.println(myCom);
+    }
+
+    if cmd.value == "0xFF52AD" {
+        myCom = "nine";
+        Serial.println(myCom);
+    }
 
 
 }
