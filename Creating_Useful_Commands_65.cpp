@@ -69,5 +69,24 @@ void loop() {  // "we sit and wait for data"
         Serial.println(myCom);
     }
 
+    if cmd.value == "0xFF629D" {
+        myCom = "v+";
+        Serial.println(myCom);
+    }
+
+    if cmd.value == "0xFFE21D" {
+        myCom = "fun";
+        Serial.println(myCom);
+    }
+
+    if cmd.value == "0xFF22DD" {
+        myCom = "rew";
+        Serial.println(myCom);
+    }
+
+    if cmd.value == "0xFF02FD" {
+        myCom = "play";
+        Serial.println(myCom);
+    }
 
 }
