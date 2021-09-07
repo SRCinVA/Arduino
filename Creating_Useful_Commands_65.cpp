@@ -14,7 +14,8 @@ void loop() {  // "we sit and wait for data"
       // while it is empty ("0"), it will just turn over in an empty loop.
     }
     // after someone presses a button:
-    Serial.println(cmd.value, HEX); // we told it that the value returned would be cmd, in the form of a hexidecimal.
+    //Serial.println(cmd.value, HEX); // we told it that the value returned would be cmd, in the form of a hexidecimal.
+    // we don't actually need this, so later in the lesson, he took it away.
     delay(1500); // need to give it a delay so that it doesn't go to fast
     IR.resume(); // this restarts the reading
     //Serial.println(cmd.value, HEX); // to show you the hex that cmd produces, but you don't need this
@@ -118,6 +119,8 @@ void loop() {  // "we sit and wait for data"
         myCom = "st";
         Serial.println(myCom);
     }
+
+
 
 
 }
