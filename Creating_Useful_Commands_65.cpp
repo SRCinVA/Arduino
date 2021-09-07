@@ -19,74 +19,105 @@ void loop() {  // "we sit and wait for data"
     IR.resume(); // this restarts the reading
     //Serial.println(cmd.value, HEX); // to show you the hex that cmd produces, but you don't need this
     
-    if cmd.value == "0xFF6897" { //or whatever hex value the remote produces ("0x" says that a hex is coming)
+    if (cmd.value == 0xFF6897) { //or whatever hex value the remote produces ("0x" says that a hex is coming)
         myCom = "zero";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF30CF" { 
+    if (cmd.value == 0xFF30CF) { 
         myCom = "one";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF18E7" { 
+    if (cmd.value == 0xFF18E7) { 
         myCom = "two";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF7A85" {
+    if (cmd.value == 0xFF7A85) {
         myCom = "three";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF10EF" {
+    if (cmd.value == 0xFF10EF) {
         myCom = "four";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF38C7" {
+    if (cmd.value == 0xFF38C7) {
         myCom = "five";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF5AA5" {
+    if (cmd.value == 0xFF5AA5) {
         myCom = "six";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF42BD" {
+    if (cmd.value == 0xFF42BD) {
         myCom = "seven";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF4AB5" {
+    if (cmd.value == 0xFF4AB5) {
         myCom = "eight";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF52AD" {
+    if (cmd.value == 0xFF52AD) {
         myCom = "nine";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF629D" {
+    if (cmd.value == 0xFF629D) {
         myCom = "v+";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFFE21D" {
+    if (cmd.value == 0xFFE21D) {
         myCom = "fun";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF22DD" {
+    if (cmd.value == 0xFF22DD) {
         myCom = "rew";
         Serial.println(myCom);
     }
 
-    if cmd.value == "0xFF02FD" {
+    if (cmd.value == 0xFF02FD) {
         myCom = "play";
         Serial.println(myCom);
     }
+
+    if (cmd.value == 0xFFC23D) {
+        myCom = "ff";
+        Serial.println(myCom);
+    }
+
+    if (cmd.value == 0xFFE01F) {
+        myCom = "dn";
+        Serial.println(myCom);
+    }
+
+    if (cmd.value == 0xFFA857) {
+        myCom = "v-";
+        Serial.println(myCom);
+    }
+
+    if (cmd.value == 0xFF906F) {
+        myCom = "up";
+        Serial.println(myCom);
+    }
+
+    if (cmd.value == 0xFF9867) {
+        myCom = "eq";
+        Serial.println(myCom);
+    }
+
+    if (cmd.value == 0xFFB04F) {
+        myCom = "st";
+        Serial.println(myCom);
+    }
+
 
 }
