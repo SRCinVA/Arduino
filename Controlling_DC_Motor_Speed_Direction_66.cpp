@@ -136,8 +136,13 @@ void loop() {  // "we sit and wait for data"
         myCom = "st";
         Serial.println(myCom);
     }
-
-
-
+    if (myCom == "pwr"){
+        digitalWrite(dir1,LOW); // one HIGH and one LOW, just to make sure the motor works
+        digitalWrite(dir2,HIGH);
+        analogWrite(speedPin,255) // 255 is full speed
+        // the fan *should* operate as soon as it gets any signal from the remote.
+        // this is the basic idea of "check as you go"--make sure you know what's going on before things get complicated
+    }
+    if (myCom == "off")
 
 }
