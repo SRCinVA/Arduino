@@ -136,6 +136,8 @@ void loop() {  // "we sit and wait for data"
         myCom = "st";
         Serial.println(myCom);
     }
+
+    // in principle, the four commands below should turn it on, off, forwards and backwards.
     if (myCom == "pwr"){
         digitalWrite(dir1,LOW); // one HIGH and one LOW, just to make sure the motor works
         digitalWrite(dir2,HIGH);
@@ -143,6 +145,24 @@ void loop() {  // "we sit and wait for data"
         // the fan *should* operate as soon as it gets any signal from the remote.
         // this is the basic idea of "check as you go"--make sure you know what's going on before things get complicated
     }
-    if (myCom == "off")
+    
+    if (myCom == "fun"){ // it seems like this just turns it off.
+        digitalWrite(dir1,LOW); // one HIGH and one LOW, just to make sure the motor works
+        digitalWrite(dir2,HIGH);
+        analogWrite(speedPin,0)
+    }
+    
+    if (myCom == "ff"){
+        digitalWrite(dir1, LOW);
+        digitalWrite(dir2, HIGH);
+        analogWrite(speedPin,mSpeed);
+    }
+
+    if (myCom == "ff"){
+        digitalWrite(dir1, HIGH);
+        digitalWrite(dir2, LOW);
+        analogWrite(speedPin,mSpeed);
+    }
+
 
 }
