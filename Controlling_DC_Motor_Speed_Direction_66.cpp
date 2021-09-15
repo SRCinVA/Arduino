@@ -158,9 +158,25 @@ void loop() {  // "we sit and wait for data"
         analogWrite(speedPin,mSpeed);
     }
 
-    if (myCom == "ff"){
+    if (myCom == "rew"){
         digitalWrite(dir1, HIGH);
         digitalWrite(dir2, LOW);
+        analogWrite(speedPin,mSpeed);
+    }
+
+    if (myCom == "up"){
+        mSpeed=mySpeed+15;  // to speed up the fan
+        if mSpeed>255{
+            mSpeed=255;     // to make sure you don't exceed 255
+        }
+        analogWrite(speedPin,mSpeed);
+    }
+
+if (myCom == "dn"){
+        mSpeed=mySpeed-15;  // to speed up the fan
+        if mSpeed<0{
+            mSpeed=0;     // to make sure you don't exceed 255
+        }
         analogWrite(speedPin,mSpeed);
     }
 
