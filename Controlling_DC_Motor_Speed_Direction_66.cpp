@@ -165,17 +165,17 @@ void loop() {  // "we sit and wait for data"
     }
 
     if (myCom == "up"){
-        mSpeed=mySpeed+15;  // to speed up the fan
-        if mSpeed>255{
-            mSpeed=255;     // to make sure you don't exceed 255
+        mSpeed=mSpeed+15;  // to speed up the fan
+        if (mSpeed>255){
+           mSpeed=255;     // to make sure you don't exceed 255
         }
         analogWrite(speedPin,mSpeed);
     }
 
-if (myCom == "dn"){
-        mSpeed=mySpeed-15;  // to speed up the fan
-        if mSpeed<0{
-            mSpeed=0;     // to make sure you don't exceed 255
+    if (myCom == "dn"){
+        mSpeed=mSpeed-15;  // to speed up the fan
+        if (mSpeed<0){
+           mSpeed=0;     // to make sure you don't exceed 255
         }
         analogWrite(speedPin,mSpeed);
     }
