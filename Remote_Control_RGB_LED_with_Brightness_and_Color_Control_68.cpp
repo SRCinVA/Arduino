@@ -12,13 +12,23 @@ int rBright=255; // looks like maximum brightness for all.
 int gBright=255;
 int bBright=255;
 
+float dFact = 1; // the "dimming factor": it's best to set this up as a float (perhaps make 0.1 into 10% brightness.)
+
+
+
 void setup()
 {
 Serial.begin(9600)
 IR.enableIRIn();     // strange capitalization ... 
 
-pinMode (rBright,OUTPUT);
-pinMode (gBright,OUTPUT);
+pinMode (rPin,OUTPUT);
+pinMode (gPin,OUTPUT);
+pinMode (bPin,OUTPUT);
+
+// just to check first if they're responsive; we'll replace 255 later.
+digitalWrite(rPin,255);
+digitalWrite(gPin,255);
+digitalWrite(bPin,255);
 
 }
 
@@ -135,7 +145,20 @@ void loop() {  // "we sit and wait for data"
         Serial.println(myCom);
     }
 
+    // we're going to keep the existing functionality and add on more capabilities with the LEDs.
+    if (myCom=="pwr"){
+        rBright = 255;
+        gBright = 255;
+        bBright = 255;
+        dFact = 1;
+    }
 
+if (myCom=="fun"){  // this turns it off.
+        rBright = 0;
+        gBright = 0;
+        bBright = 0;
+        dFact = 1;
+    }
 
 
 }
