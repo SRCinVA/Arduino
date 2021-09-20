@@ -26,9 +26,9 @@ pinMode (gPin,OUTPUT);
 pinMode (bPin,OUTPUT);
 
 // just to check first if they're responsive; we'll replace 255 later.
-digitalWrite(rPin,255);
-digitalWrite(gPin,255);
-digitalWrite(bPin,255);
+// digitalWrite(rPin,255);
+// digitalWrite(gPin,255);
+// digitalWrite(bPin,255);
 
 }
 
@@ -153,12 +153,22 @@ void loop() {  // "we sit and wait for data"
         dFact = 1;
     }
 
-if (myCom=="fun"){  // this turns it off.
+    if (myCom=="fun"){  // this turns it off.
         rBright = 0;
         gBright = 0;
         bBright = 0;
-        dFact = 1;
+        dFact = 0;
     }
+    if (myCom=="zero"){  // this makes it white
+        rBright = 255;
+        gBright = 255;
+        bBright = 255;
+        dFact = 0;
 
+    
 
+    // this is what actually makes it light up or turn off.
+    analogWrite(rPin,rBright);
+    analogWrite(gPin,gBright);
+    analogWrite(gPin,bBright);
 }
