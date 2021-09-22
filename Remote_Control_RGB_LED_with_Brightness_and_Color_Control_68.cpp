@@ -163,10 +163,39 @@ void loop() {  // "we sit and wait for data"
         rBright = 255;
         gBright = 255;
         bBright = 255;
-        dFact = 0;
-
-    
-
+        // dFact = 0;  you don't want to mess with this when pressign the numbers,
+        // so we won't be using this for the other numbers.
+    }
+    if (myCom=="one"){  // this makes it red
+        rBright = 255;
+        gBright = 0;
+        bBright = 0;
+    }
+    if (myCom=="two"){  // green
+        rBright = 0;
+        gBright = 255;
+        bBright = 0;
+    }
+    if (myCom=="three"){  // blue
+        rBright = 0;
+        gBright = 0;
+        bBright = 255;
+    }
+    if (myCom=="four"){  // cyan
+        rBright = 0;
+        gBright = 255;
+        bBright = 255;
+    }
+    if (myCom=="five"){  // magenta
+        rBright = 255;
+        gBright = 0;
+        bBright = 255;
+    }
+    if (myCom=="six"){  // 
+        rBright = 255;
+        gBright = 255;
+        bBright = 0;
+    }
     // this is what actually makes it light up or turn off.
     analogWrite(rPin,rBright);
     analogWrite(gPin,gBright);
