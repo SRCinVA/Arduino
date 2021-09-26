@@ -6,7 +6,7 @@ String myCom;
 
 int rPin = 6;
 int gPin = 10;
-int bPin = 11;
+int bPin = 5;  // some weird thing in the IRremote library messes with pin 11, we needed an alternative.
 
 int rBright=255; // looks like maximum brightness for all.
 int gBright=255;
@@ -189,13 +189,14 @@ void loop() {  // "we sit and wait for data"
     if (myCom=="five"){  // magenta
         rBright = 255;
         gBright = 0;
-        bBright = 255;
+        bBright = 150;
     }
-    if (myCom=="six"){  // 
+    if (myCom=="six"){  // yellow
         rBright = 255;
         gBright = 255;
         bBright = 0;
     }
+    
     // this is what actually makes it light up or turn off.
     analogWrite(rPin,rBright);
     analogWrite(gPin,gBright);
