@@ -197,8 +197,20 @@ void loop() {  // "we sit and wait for data"
         bBright = 0;
     }
     
+    // when changing overall brightness, our eyes won't detect arithmetic changes--they'll need to be geometric.
+    if (myCom=="dn"){
+        dFact=dFact*.75;
+    }
+    if (myCom=="up"){
+        dFact=dFact*1.3;
+        if (dFact>1){  // don't let dFact go above 1, to keep brightness values below 255
+            dFact=1
+        }
+    }
+
     // this is what actually makes it light up or turn off.
-    analogWrite(rPin,rBright);
-    analogWrite(gPin,gBright);
-    analogWrite(gPin,bBright);
+    // dFact is how you control the overall brightness (not messing with individual LEDs)
+    analogWrite(rPin,rBright*dFact);
+    analogWrite(gPin,gBright*dFact);
+    analogWrite(gPin,bBright*dFact);
 }
